@@ -1,6 +1,6 @@
 # 🎈 Pop Pop Ball 🎈
 
-![Pop Pop Ball Banner](https://via.placeholder.com/1200x300.png?text=Pop+Pop+Ball)
+![Pop Pop Ball Banner](PopPopBall.mp4)
 
 ## 🚀 Introduction
 
