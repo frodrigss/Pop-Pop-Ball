@@ -1,0 +1,210 @@
+@font-face {
+	font-family: "fonte";
+	src: url(fonte.ttf);
+}
+
+@font-face {
+	font-family: "comic";
+	src: url(ComicNeue-Regular.ttf);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+	background: radial-gradient(ellipse at 50% 50%, #1a2b52 0%, #101e39 90%);
+	display: flex;
+	justify-content: center;
+	user-select: none;
+	font-family: "comic", sans-serif;
+	overflow: hidden;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.menu-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 100%;
+	animation: fadeIn 1s ease-in-out;
+}
+
+.titulo {
+	font-size: 12vh;
+	color: #fff;
+	letter-spacing: 0.5vh;
+	text-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.3);
+	margin-top: -20vh;
+	font-family: "fonte", sans-serif;
+}
+
+.titulo-parte:nth-child(1) {
+	color: #58b058;
+}
+
+.titulo-parte:nth-child(2) {
+	color: #2f4ebc;
+}
+
+.titulo-parte:nth-child(3) {
+	color: #d63535;
+}
+
+#mensagem {
+	font-family: "comic", sans-serif;
+	font-size: 2.7vh;
+	color: #e9e4e4;
+	margin: 5vh;
+	text-align: center;
+	transition: opacity 0.5s ease-in-out;
+	animation: fadeInText 2s forwards;
+	text-shadow: 0 0.1vh 0.2vh rgba(0, 0, 0, 0.5);
+}
+
+.button-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2vh;
+	width: 100%;
+	max-width: 26.5vh;
+	align-items: center;
+}
+
+#nome-jogador {
+	width: 100%;
+	padding: 2vh 0;
+	background-color: #333;
+	color: white;
+	font-family: "comic", sans-serif;
+	border: 0.5vh solid rgba(0, 0, 0, 0.425);
+	border-radius: 2.5vh;
+	font-size: 2.5vh;
+	text-align: center;
+	text-transform: uppercase;
+	outline: none;
+	transition: all 0.3s ease;
+}
+
+#nome-jogador:focus {
+	background-color: rgba(75, 68, 68, 0.563);
+	border-color: rgba(30, 29, 29, 0.841);
+}
+
+#nome-jogador::placeholder {
+	color: #666;
+}
+
+button {
+	width: 100%;
+	padding: 2vh 0;
+	background-color: #58b058;
+	color: white;
+	font-family: "comic", sans-serif;
+	border: 0.5vh solid rgba(0, 0, 0, 0.425);
+	border-radius: 2.5vh;
+	font-size: 2.5vh;
+	cursor: pointer;
+	transition: all 0.2s ease, filter 0.3s ease;
+	text-transform: uppercase;
+	box-shadow: 0 0.4vh 0.8vh rgba(9, 9, 9, 0.85);
+}
+
+button:not(:disabled):hover {
+	transform: translateY(-0.7vh);
+	background: #3f8a3f;
+	box-shadow: 0 1.1vh 1.3vh rgba(9, 9, 9, 0.735);
+}
+
+button:not(:disabled):active {
+	transform: translateY(0vh);
+	box-shadow: 0 0.4vh 0.8vh rgba(9, 9, 9, 0.85);
+}
+
+button:disabled {
+	filter: saturate(30%);
+	cursor: not-allowed;
+	color: #000000;
+}
+
+.imagem-container {
+	position: fixed;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+	filter: saturate(0.5);
+	transition: filter 0.3s, color 0.3s;
+	color: #ac8787;
+}
+
+.imagem-container:hover {
+	filter: saturate(1);
+	color: #f1f1f1;
+}
+
+img {
+	height: 10vh;
+	width: 10vh;
+}
+
+.texto {
+	font-size: 1.9vh;
+	font-weight: bold;
+	margin-top: 0.8vh;
+}
+
+.versao {
+	font-size: 1.8vh;
+	position: absolute;
+	bottom: 4vh;
+	color: rgba(233, 228, 228, 0.7);
+	right: 2vh;
+	text-shadow: 0 0.1vh 0.2vh rgba(0, 0, 0, 0.5);
+}
+
+.moedas-container {
+	position: fixed;
+	top: 2vh;
+	right: 2vw;
+	display: flex;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 0.5vh 1vw;
+	border-radius: 2vh;
+}
+
+.moeda-icone {
+	width: 3vh;
+	height: 3vh;
+	margin-right: 1vw;
+}
+
+#total-moedas {
+	color: #ffd700;
+	font-size: 2.5vh;
+	font-weight: bold;
+}
+
+
+#ranking {
+	top: 2vh;
+	left: 2vw;
+	padding-top: 4vh;
+}
+
+#customiza {
+	bottom: 2vh;
+	left: 2vw;
+	padding-bottom: 4vh;
+}
