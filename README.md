@@ -62,7 +62,7 @@ All customizations are saved locally, allowing you to retain your preferences ac
 
 ## 📈 Live Demo
 
-Experience Pop Pop Ball firsthand! [Play Now](https://yourlivegameurl.com)
+Experience Pop Pop Ball firsthand! [Play Now](https://pop-pop-ball.vercel.app/)
 
 ## 🛠️ Contributing
 
@@ -92,7 +92,7 @@ Experience Pop Pop Ball firsthand! [Play Now](https://yourlivegameurl.com)
 🚫 **Restricted License**  
 This project is **not** available for commercial use or personal projects. You are only permitted to fork this repository for educational and non-commercial purposes. Any unauthorized use is strictly prohibited.
 
-For more details, please refer to the `LICENSE` file.
+For more details, please refer to the [LICENSE.md] file.
 
 ## 📫 Contact
 
