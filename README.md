@@ -92,7 +92,7 @@ Experience Pop Pop Ball firsthand! [Play Now](https://pop-pop-ball.vercel.app/)
 🚫 **Restricted License**  
 This project is **not** available for commercial use or personal projects. You are only permitted to fork this repository for educational and non-commercial purposes. Any unauthorized use is strictly prohibited.
 
-For more details, please refer to the [LICENSE.md] file.
+For more details, please refer to the [LICENSE](licence.md)file.
 
 ## 📫 Contact
 
