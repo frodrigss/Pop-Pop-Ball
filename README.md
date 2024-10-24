@@ -1,4 +1,4 @@
-#  Pop Pop Ball 🔴
+#  Pop Pop Ball - previa@1.0.0 🔴
 
 ![Pop Pop Ball Banner](Pop-Pop-Ball.gif)
 
