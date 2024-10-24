@@ -1,4 +1,4 @@
-# 🎈 Pop Pop Ball 🎈
+#  Pop Pop Ball 🔴
 
 ![Pop Pop Ball Banner](Pop-Pop-Ball.gif)
 
