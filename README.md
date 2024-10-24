@@ -98,13 +98,6 @@ For more details, please refer to the [LICENSE] (licencse.md)file.
 
 Have questions or feedback?
 
-- **Email:** [![Email](https://img.shields.io/badge/Email-FF0000?style=flat&logo=gmail&logoColor=white)](mailto:soaresrodriguesf07@icloud.com)
-- **Portfolio:** [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=About.me&logoColor=white)]()
-
----
-
-## 🤝 Get Involved
-
 <div align="center">
   <a href="mailto:your.email@example.com">
     <img src="https://img.shields.io/badge/iCloud-3693F3?style=for-the-badge&logo=iCloud&logoColor=white" alt="iCloud">
