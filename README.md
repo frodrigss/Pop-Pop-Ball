@@ -38,7 +38,7 @@ Pop Pop Ball not only provides entertainment but also helps players develop:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/pop-pop-ball.git
+   git clone https://github.com/frodrigss/pop-pop-ball.git
    ```
 
 2. **Navigate to the Project Directory:**
@@ -49,7 +49,7 @@ Pop Pop Ball not only provides entertainment but also helps players develop:
 
 3. **Open the Game:**
 
-   - Open `pages/index.html` in your preferred web browser.
+   - Open `index.html` in your preferred web browser.
 
 ## 🎨 Customization
 
