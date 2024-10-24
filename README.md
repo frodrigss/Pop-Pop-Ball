@@ -99,7 +99,7 @@ For more details, please refer to the [LICENSE] (licencse.md)file.
 Have questions or feedback?
 
 - **Email:** [![Email](https://img.shields.io/badge/Email-FF0000?style=flat&logo=gmail&logoColor=white)](mailto:your.email@example.com)
-- **Portfolio:** [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=About.me&logoColor=white)](https://yourportfolio.com)
+- **Portfolio:** [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=About.me&logoColor=white)]()
 
 ---
 
