@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../src/styles/index.css" />
-		<link rel="icon" href="../src/assets/images/ico.png" type="image/png" />
-		<title>Pop Pop Ball</title>
-	</head>
-	<body>
-		<div class="menu-container">
-			<a href="https://pt.textstudio.com/"
-				><img src="../../public/src/assets/images/logo-img.png" class="titulo"
-			/></a>
-			<p id="mensagem">Bem-vindo!</p>
-			<div class="button-container">
-				<input
-					type="text"
-					id="nome-jogador"
-					maxlength="6"
-					placeholder="NICKNAME"
-				/>
-				<button id="jogar-btn" class="game-button" onclick="jogar()" disabled>
-					Jogar
-				</button>
-			</div>
-		</div>
-		<div id="ranking" class="imagem-container" onclick="mostrarRanking()">
-			<img src="../../public/src/assets/images/rkn.png" alt="Ranking" />
-			<div class="texto">RANKING LOCAL</div>
-		</div>
-		<div id="customiza" class="imagem-container" onclick="personalizar()">
-			<div class="bola"></div>
-			<div class="texto">CUSTOMIZAR SKIN</div>
-		</div>
-		<div class="versao">V: 0.9b</div>
-		<div id="moedas-container" class="moedas-container">
-			<img src="../../public/src/assets/images/coin.png" alt="Moeda" class="moeda-icone" />
-			<span id="total-moedas">PopCoins: 0</span>
-		</div>
-		<script src="../../public/src/scripts/index.js"></script>
-		<script>
-			function mostrarRanking() {
-				window.location.href = "ranking.html";
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/index.css" />
+    <link rel="icon" href="./src/assets/images/ico.png" type="image/png" />
+    <title>Pop Pop Ball</title>
+  </head>
+  <body>
+    <div class="menu-container">
+      <a href="https://pt.textstudio.com/"
+        ><img src="./src/assets/images/logo-img.png" class="titulo"
+      /></a>
+      <p id="mensagem">Bem-vindo!</p>
+      <div class="button-container">
+        <input
+          type="text"
+          id="nome-jogador"
+          maxlength="6"
+          placeholder="NICKNAME"
+        />
+        <button id="jogar-btn" class="game-button" onclick="jogar()" disabled>
+          Jogar
+        </button>
+      </div>
+    </div>
+    <div id="ranking" class="imagem-container" onclick="mostrarRanking()">
+      <img src="./src/assets/images/rkn.png" alt="Ranking" />
+      <div class="texto">RANKING LOCAL</div>
+    </div>
+    <div id="customiza" class="imagem-container" onclick="personalizar()">
+      <div class="bola"></div>
+      <div class="texto">CUSTOMIZAR SKIN</div>
+    </div>
+    <div class="versao">V: 0.9b</div>
+    <div id="moedas-container" class="moedas-container">
+      <img src="./src/assets/images/coin.png" alt="Moeda" class="moeda-icone" />
+      <span id="total-moedas">PopCoins: 0</span>
+    </div>
+    <script src=".src/scripts/index.js"></script>
+    <script>
+      function mostrarRanking() {
+        window.location.href = "ranking.html";
+      }
 
-			function personalizar() {
-				window.location.href = "customization.html";
-			}
-		</script>
-	</body>
+      function personalizar() {
+        window.location.href = "customization.html";
+      }
+    </script>
+  </body>
 </html>

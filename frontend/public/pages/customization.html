@@ -1,118 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../../public/src/styles/customization.css" />
-		<link rel="icon" href="../../public/src/assets/images/ico.png" type="image/png" />
-		<title>Pop Pop Ball - Personalizar</title>
-	</head>
-	<body>
-		<div class="container">
-			<div class="area">
-				<h2>Custom</h2>
-				<div class="bola" id="preview"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/customization.css" />
+    <link rel="icon" href="./src/assets/images/ico.png" type="image/png" />
+    <title>Pop Pop Ball - Personalizar</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="area">
+        <h2>Custom</h2>
+        <div class="bola" id="preview"></div>
 
-				<div class="tabs">
-					<button class="tab-button active" data-tab="corBola">
-						Cor da Bola
-					</button>
-					<button class="tab-button" data-tab="corBorda">Cor da Borda</button>
-				</div>
+        <div class="tabs">
+          <button class="tab-button active" data-tab="corBola">
+            Cor da Bola
+          </button>
+          <button class="tab-button" data-tab="corBorda">Cor da Borda</button>
+        </div>
 
-				<div class="tab-content">
-					<div id="corBola" class="tab-pane active">
-						<div class="options">
-							<div
-								class="option"
-								style="background-color: #ff6b6b"
-								onclick="mudarCorBola('#FF6B6B')"
-							></div>
-							<div
-								class="option"
-								style="background-color: #4ecdc4"
-								onclick="mudarCorBola('#4ECDC4')"
-							></div>
-							<div
-								class="option"
-								style="background-color: #d29930"
-								onclick="mudarCorBola('#d29930')"
-							></div>
-							<div
-								class="option"
-								style="background-color: red"
-								onclick="mudarCorBola('red')"
-							></div>
-							<div
-								class="option"
-								style="background-color: purple"
-								onclick="mudarCorBola('purple')"
-							></div>
-							<div
-								class="option"
-								style="background-color: white"
-								onclick="mudarCorBola('white')"
-							></div>
-							<div
-								id="rainbowOption"
-								class="option rainbow-option"
-								onclick="rainbow()"
-							></div>
-						</div>
-					</div>
+        <div class="tab-content">
+          <div id="corBola" class="tab-pane active">
+            <div class="options">
+              <div
+                class="option"
+                style="background-color: #ff6b6b"
+                onclick="mudarCorBola('#FF6B6B')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: #4ecdc4"
+                onclick="mudarCorBola('#4ECDC4')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: #d29930"
+                onclick="mudarCorBola('#d29930')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: red"
+                onclick="mudarCorBola('red')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: purple"
+                onclick="mudarCorBola('purple')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: white"
+                onclick="mudarCorBola('white')"
+              ></div>
+              <div
+                id="rainbowOption"
+                class="option rainbow-option"
+                onclick="rainbow()"
+              ></div>
+            </div>
+          </div>
 
-					<div id="corBorda" class="tab-pane">
-						<div class="options">
-							<div
-								class="option"
-								style="background-color: #625e46"
-								onclick="mudarCorBorda('#625e46')"
-							></div>
-							<div
-								class="option"
-								style="background-color: #00498a"
-								onclick="mudarCorBorda('#00498a')"
-							></div>
-							<div
-								class="option"
-								style="background-color: #acf8f8"
-								onclick="mudarCorBorda('#d2ffff')"
-							></div>
-							<div
-								class="option"
-								style="background-color: black"
-								onclick="mudarCorBorda('black')"
-							></div>
-							<div
-								class="option"
-								style="background-color: #daa520"
-								onclick="mudarCorBorda('#daa520')"
-							></div>
-							<div
-								class="option"
-								style="background-color: #850000"
-								onclick="mudarCorBorda('#850000')"
-							></div>
-							<div
-								class="option"
-								id="no-border-option"
-								onclick="removeBorder()"
-							></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="controls">
-				<div class="button-container">
-					<button class="game-button" onclick="salvar()">Salvar</button>
-					<button class="game-button" id="home" onclick="home()">Home</button>
-				</div>
-			</div>
-		</div>
-		<div id="moedas-container" class="moedas-container">
-			<img src="../../public/src/assets/images/coin.png" alt="Moeda" class="moeda-icone" />
-			<span id="total-moedas">PopCoins:0</span>
-		</div>
-		<script src="../../public/src/scripts/customization.js"></script>
-	</body>
+          <div id="corBorda" class="tab-pane">
+            <div class="options">
+              <div
+                class="option"
+                style="background-color: #625e46"
+                onclick="mudarCorBorda('#625e46')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: #00498a"
+                onclick="mudarCorBorda('#00498a')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: #acf8f8"
+                onclick="mudarCorBorda('#d2ffff')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: black"
+                onclick="mudarCorBorda('black')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: #daa520"
+                onclick="mudarCorBorda('#daa520')"
+              ></div>
+              <div
+                class="option"
+                style="background-color: #850000"
+                onclick="mudarCorBorda('#850000')"
+              ></div>
+              <div
+                class="option"
+                id="no-border-option"
+                onclick="removeBorder()"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="button-container">
+          <button class="game-button" onclick="salvar()">Salvar</button>
+          <button class="game-button" id="home" onclick="home()">Home</button>
+        </div>
+      </div>
+    </div>
+    <div id="moedas-container" class="moedas-container">
+      <img src="./src/assets/images/coin.png" alt="Moeda" class="moeda-icone" />
+      <span id="total-moedas">PopCoins:0</span>
+    </div>
+    <script src="./src/scripts/customization.js"></script>
+  </body>
 </html>
