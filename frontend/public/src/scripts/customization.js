@@ -73,6 +73,29 @@ window.onload = function () {
 		}
 	}
 
-	const totalMoedas = localStorage.getItem('totalMoedas') || '0';
-	document.getElementById('total-moedas').textContent = 'PopCoins: ' + totalMoedas;
+	const tabButtons = document.querySelectorAll(".tab-button");
+
+	tabButtons.forEach((button) => {
+		button.addEventListener("click", function () {
+			const tabName = this.getAttribute("data-tab");
+			openTab(tabName);
+		});
+	});
+
+	function openTab(tabName) {
+		const tabPanes = document.getElementsByClassName("tab-pane");
+		const activePane = document.querySelector(".tab-pane.active");
+
+		if (activePane) {
+			activePane.classList.add("leaving")
+				activePane.classList.remove("active", "leaving");
+		}
+		tabButtons.forEach((button) => button.classList.remove("active"));
+		document.querySelector(`[data-tab="${tabName}"]`).classList.add("active");
+		document.getElementById(tabName).classList.add("active");
+	}
+
+	const totalMoedas = localStorage.getItem("totalMoedas") || "0";
+	document.getElementById("total-moedas").textContent =
+		"PopCoins: " + totalMoedas;
 };

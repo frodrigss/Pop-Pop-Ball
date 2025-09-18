@@ -2,7 +2,7 @@
 
 **THIS README IS ASSOCIATED WITH VERSION 0.9 OF POP POP BALL. THE README WILL ONLY BE UPDATED IN VERSION 1.0. CURRENT VERSION: 0.9b**
 
-![Pop Pop Ball Banner](docs/media/Pop-Pop-Ball.gif)
+![Pop Pop Ball Banner](media/Pop-Pop-Ball.gif)
 
 ## 🚀 Introduction
 
@@ -93,5 +93,5 @@ Experience Pop Pop Ball firsthand! [Play Now](https://pop-pop-ball.vercel.app/)
 
 ## 📄 License
 
-For more details, please refer to the [LICENSE](docs/LICENSE.md)
+For more details, please refer to the [LICENSE](LICENSE.md)
 file.

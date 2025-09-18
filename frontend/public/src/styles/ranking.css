@@ -1,0 +1,38 @@
+@import "geral.css";
+
+.container {
+	width: 48vh;
+}
+
+#ranking {
+	padding: 2.5vh;
+	margin-bottom: 4vh;
+	text-align: center;
+	font-size: 3vh;
+}
+
+#ranking-list {
+	font-size: 2vh;
+	list-style-type: none;
+	color: #bdc3c7;
+}
+
+#ranking-list li::before {
+	content: "#";
+	margin-right: 0.8vh;
+	color: #398f3c;
+}
+
+#ranking-list li#none::before {
+	content: "";
+}
+
+#ranking-list li {
+	padding: 1.2vh 0;
+	border-bottom: 0.1vh solid rgba(255, 255, 255, 0.1);
+	transition: background-color 0.3s ease;
+}
+
+#ranking-list li:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}

@@ -5,7 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		level = document.getElementById("level"),
 		mensagemFinal = document.getElementById("mensagem-final"),
 		barra = document.getElementById("barra-progresso-inner"),
-		barraProgresso = document.getElementById("barra-progresso");
+		barraProgresso = document.getElementById("barra-progresso"),
+		homeButton = document.getElementById("home"),
+		popupConfirmacao = document.getElementById("popup-confirmacao"),
+		confirmarHome = document.getElementById("confirmar-home"),
+		cancelarHome = document.getElementById("cancelar-home");
 
 	const play = document.getElementById("play"),
 		coringa = document.getElementById("coringa"),
@@ -15,13 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		booster = document.querySelector(".booster"),
 		bola = document.querySelector(".bola");
 
-	const somPositivo = new Audio("sons/somPositivo.wav"),
-		somNegativo = new Audio("sons/somNegativo.wav"),
+	const somPositivo = new Audio("../assets/sounds/somPositivo.wav"),
+		somNegativo = new Audio("../assets/sounds/somNegativo.wav"),
 		sons = [
-			new Audio("sons/pop-1.mp3"),
-			new Audio("sons/pop-2.mp3"),
-			new Audio("sons/pop-3.mp3"),
-			new Audio("sons/pop-4.mp3"),
+			new Audio("../assets/sounds/pop-1.mp3"),
+			new Audio("../assets/sounds/pop-2.mp3"),
+			new Audio("../assets/sounds/pop-3.mp3"),
+			new Audio("../assets/sounds/pop-4.mp3"),
 		];
 
 	let pontos = 0,
@@ -49,16 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		bolaMenorBoosters = 0;
 
 	let rankings = JSON.parse(localStorage.getItem("rankings")) || [];
-
-	// Variáveis para armazenar a posição atual do mouse
-	let mouseX = 0;
-	let mouseY = 0;
-
-	// Atualiza as coordenadas do mouse sempre que ele se move
-	document.addEventListener("mousemove", (evento) => {
-		mouseX = evento.clientX;
-		mouseY = evento.clientY;
-	});
+	let iniciarTempo;
 
 	function moverElemento(elemento) {
 		const margemSeguranca = Math.max(8 - (nivel - 1), 5);
@@ -80,7 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function moverBola() {
+		bolaEmMovimento = true;
 		moverElemento(bola);
+		setTimeout(() => {
+			bolaEmMovimento = false;
+		}, 500);
 	}
 
 	function atualizarPontos() {
@@ -97,6 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		const cor = obterCorBarraProgresso(nivel);
 		barra.style.backgroundColor = cor;
 	}
+
+	//!: Solução temporária - Necessita refatoração urgente
+	//Essa implementação atual resolve o problema mas não é a ideal
+	setInterval(() => {
+		const cor = obterCorBarraProgresso(nivel);
+		barra.style.backgroundColor = cor;
+	}, 10);
 
 	function ajustarDificuldade() {
 		const { tamanho, intervalo } = obterDificuldade();
@@ -233,16 +239,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		}, 250);
 	}
 
+	let piscadaCoringa;
+
 	function iniciarPiscadaCoringa() {
 		coringa.style.visibility = "visible";
 
-		const piscadaCoringa = setInterval(() => {
+		piscadaCoringa = setInterval(() => {
 			if (jogoAtivo) {
 				if (coringa.style.visibility === "hidden") {
 					coringa.style.visibility = "visible";
 				} else {
 					coringa.style.visibility = "hidden";
 				}
+			} else {
+				clearInterval(piscadaCoringa);
+				coringa.style.visibility = "hidden";
 			}
 		}, 250);
 
@@ -253,34 +264,38 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function aplicarEfeitoCoringa() {
-		coringaAtivo = true;
-		const adicionarOuSubtrair = Math.random() < 0.5 ? -1 : 1;
-		const incremento = Math.floor(Math.random() * 7) + 3;
+		if (jogoAtivo) {
+			coringaAtivo = true;
+			const adicionarOuSubtrair = Math.random() < 0.5 ? -1 : 1;
+			const incremento = Math.floor(Math.random() * 7) + 3;
 
-		pontos += incremento * adicionarOuSubtrair;
-		tempoRestante = Math.max(
-			0,
-			tempoRestante + incremento * adicionarOuSubtrair
-		);
+			pontos += incremento * adicionarOuSubtrair;
+			tempoRestante = Math.max(
+				0,
+				tempoRestante + incremento * adicionarOuSubtrair
+			);
 
-		if (adicionarOuSubtrair > 0) {
-			somPositivo.play();
+			if (adicionarOuSubtrair > 0) {
+				somPositivo.play();
+			} else {
+				somNegativo.play();
+			}
+
+			atualizarPontos();
+			ajustarDificuldade();
+
+			const pararPiscadaCoringa = iniciarPiscadaCoringa();
+			aplicarEfeitoVisualCoringa();
+
+			piscarElemento(score);
+			piscarElemento(tempo);
+
+			setTimeout(() => {
+				finalizarEfeitoCoringa(pararPiscadaCoringa);
+			}, 8100);
 		} else {
-			somNegativo.play();
+			configurarEstadoInicial();
 		}
-
-		atualizarPontos();
-		ajustarDificuldade();
-
-		pararPiscadaCoringa = iniciarPiscadaCoringa();
-		aplicarEfeitoVisualCoringa();
-
-		piscarElemento(score);
-		piscarElemento(tempo);
-
-		setTimeout(() => {
-			finalizarEfeitoCoringa();
-		}, 8100);
 	}
 
 	function aplicarEfeitoVisualCoringa() {
@@ -297,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}, 100);
 	}
 
-	function finalizarEfeitoCoringa() {
+	function finalizarEfeitoCoringa(pararPiscadaCoringa) {
 		clearInterval(rainbowInterval);
 		clearInterval(attDificuldade);
 		pararPiscadaCoringa();
@@ -361,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	function controlarTempo() {
 		tempoRestante = tempoRestante - 1;
 		tempo.textContent = tempoRestante;
-		if (tempoRestante < 0) {
+		if (tempoRestante <= 0) {
 			finalizarJogo();
 			play.textContent = "Jogar";
 		} else {
@@ -370,16 +385,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function inicializarEstatisticas() {
-		(totalClicks = 0),
-			(maxLevel = 1),
-			(totalBoosters = 0),
-			(coringaBoosters = 0),
-			(pontosPositivosBoosters = 0),
-			(pontosNegativosBoosters = 0),
-			(tempoExtraBoosters = 0),
-			(tempoReduzidoBoosters = 0),
-			(bolaMaiorBoosters = 0),
-			(bolaMenorBoosters = 0);
+		totalClicks = 0;
+		maxLevel = 1;
+		totalBoosters = 0;
+		coringaBoosters = 0;
+		pontosPositivosBoosters = 0;
+		pontosNegativosBoosters = 0;
+		tempoExtraBoosters = 0;
+		tempoReduzidoBoosters = 0;
+		bolaMaiorBoosters = 0;
+		bolaMenorBoosters = 0;
 	}
 
 	function configurarEstadoInicial() {
@@ -387,11 +402,17 @@ document.addEventListener("DOMContentLoaded", () => {
 		pontos = 0;
 		tempoRestante = 80;
 		nivel = 1;
+		coringaAtivo = false;
 		atualizarPontos();
 		moverBola();
 	}
 
 	function configurarVisualizacao() {
+		if (rainbowInterval) {
+			clearInterval(rainbowInterval);
+		}
+
+		level.textContent = "Nível: 1";
 		bola.style.display = "block";
 		tempo.style.color = "#4caf50";
 		mensagemFinal.style.visibility = "hidden";
@@ -420,7 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				if (borda === "none") {
 					bola.style.border = "none";
 				} else {
-					bola.style.border = `0.25vw solid ${borda}`;
+					bola.style.border = `0.25vw  solid ${borda}`;
 				}
 			}
 
@@ -453,7 +474,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		atualizarRankingVisual();
 		exibirMensagemFinal();
 
-		// Remover evento de tecla
 		document.removeEventListener("keydown", verificarTecla);
 	}
 
@@ -475,10 +495,17 @@ document.addEventListener("DOMContentLoaded", () => {
 	function resetarVisualizacao() {
 		bola.style.width = "8vh";
 		bola.style.height = "8vh";
-		bola.style.transition =
-			"top 0.45s ease, left 0.45s ease, width 0.45s ease, height 0.45s ease, box-shadow 0.25s ease";
-		tempo.style.color = "white";
-
+		const corBola = localStorage.getItem("corBolaCustomizada");
+		if (corBola) {
+			if (corBola === "rainbow") {
+				rainbowEfeito();
+				bola.style.transition =
+					"top 0.45s ease, left 0.45s ease, width 0.45s ease, height 0.45s ease, box-shadow 0.25s ease, background-color 0.3s ease";
+			} else {
+				bola.style.transition =
+					"top 0.45s ease, left 0.45s ease, width 0.45s ease, height 0.45s ease, box-shadow 0.25s ease";
+			}
+		}
 		booster.style.display = "none";
 		bola.style.display = "none";
 		coringa.style.visibility = "hidden";
@@ -491,7 +518,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	function atualizarRanking(pontos) {
 		try {
-			const nomeJogador = localStorage.getItem("nomeJogador") || "Teste";
+			const nomeJogador = localStorage.getItem("nomeJogador") || "Guest";
 
 			let jogadorExistente = rankings.find(
 				(jogador) => jogador.nome === nomeJogador
@@ -508,11 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				});
 			}
 
-			rankings.sort((a, b) => b.pontos - a.pontos);
-
-			if (rankings.length > 10) {
-				rankings = rankings.slice(0, 10);
-			}
+			rankings.sort((a, b) => b.pontos - a.pontos).splice(10);
 
 			localStorage.setItem("rankings", JSON.stringify(rankings));
 		} catch (erro) {
@@ -575,65 +598,31 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	function atualizarRanking(pontos) {
-		const nomeJogador = localStorage.getItem("nomeJogador") || "Guest";
-
-		let jogadorExistente = rankings.find(
-			(jogador) => jogador.nome === nomeJogador
-		);
-
-		if (jogadorExistente) {
-			if (pontos > jogadorExistente.pontos) {
-				jogadorExistente.pontos = pontos;
-			}
-		} else {
-			rankings.push({
-				nome: nomeJogador,
-				pontos: pontos,
-			});
-		}
-
-		rankings.sort((a, b) => b.pontos - a.pontos);
-
-		if (rankings.length > 10) {
-			rankings = rankings.slice(0, 10);
-		}
-
-		localStorage.setItem("rankings", JSON.stringify(rankings));
-	}
-
-	function atualizarRankingVisual() {
-		rankingList.innerHTML = "";
-		rankings.forEach((jogador, index) => {
-			const rankingItem = document.createElement("li");
-			rankingItem.textContent = `${index + 1}. ${jogador.nome} - ${
-				jogador.pontos
-			} pontos`;
-			rankingList.appendChild(rankingItem);
-		});
-	}
+	let bolaEmMovimento = false;
 
 	function bolaClick() {
-		pontos++;
-		totalClicks++;
+		if (!bolaEmMovimento) {
+			pontos++;
+			totalClicks++;
 
-		if (pontos % 2 === 0) {
-			moedasGanhas++;
+			if (pontos % 2 === 0) {
+				moedasGanhas++;
+			}
+
+			ajustarDificuldade();
+			atualizarPontos();
+
+			bola.classList.add("brilhando");
+
+			const somAleatorio = sons[Math.floor(Math.random() * sons.length)];
+			somAleatorio.play();
+
+			setTimeout(() => {
+				bola.classList.remove("brilhando");
+			}, 250);
+
+			moverBola();
 		}
-
-		ajustarDificuldade();
-		atualizarPontos();
-
-		bola.classList.add("brilhando");
-
-		const somAleatorio = sons[Math.floor(Math.random() * sons.length)];
-		somAleatorio.play();
-
-		setTimeout(() => {
-			bola.classList.remove("brilhando");
-		}, 250);
-
-		moverBola();
 	}
 
 	function boosterClick() {
@@ -652,10 +641,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	window.home = function () {
-		window.location.href = "index.html";
-	};
-
 	bola.addEventListener("click", bolaClick);
 	booster.addEventListener("click", boosterClick);
 	play.addEventListener("click", playClick);
@@ -672,6 +657,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
+	let mouseX = 0;
+	let mouseY = 0;
+
+	document.addEventListener("mousemove", (evento) => {
+		mouseX = evento.clientX;
+		mouseY = evento.clientY;
+	});
+
 	function mouseEstaSobreABola() {
 		const rect = bola.getBoundingClientRect();
 
@@ -685,7 +678,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	function mouseEstaSobreBooster() {
 		const rect = booster.getBoundingClientRect();
-	
+
 		return (
 			mouseX >= rect.left &&
 			mouseX <= rect.right &&
@@ -693,4 +686,21 @@ document.addEventListener("DOMContentLoaded", () => {
 			mouseY <= rect.bottom
 		);
 	}
+
+	homeButton.addEventListener("click", (event) => {
+		if (jogoAtivo) {
+			event.preventDefault();
+			popupConfirmacao.style.display = "flex";
+		} else {
+			window.location.href = "index.html";
+		}
+	});
+
+	confirmarHome.addEventListener("click", () => {
+		window.location.href = "index.html";
+	});
+
+	cancelarHome.addEventListener("click", () => {
+		popupConfirmacao.style.display = "none";
+	});
 });

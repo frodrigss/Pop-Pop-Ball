@@ -1,32 +1,43 @@
 @font-face {
+	font-family: "titulo";
+	src: url(../assets/fonts/fonte.ttf);
+}
+
+@font-face {
 	font-family: "fonte";
-	src: url(fonte.ttf);
+	src: url(../assets/fonts/ComicNeue-Regular.ttf);
 }
 
 @font-face {
 	font-family: "comic";
-	src: url(ComicNeue-Regular.ttf);
+	src: url(../assets/fonts/ComicNeue-Regular.ttf);
 }
 
 * {
-	padding: 0;
-	margin: 0;
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-html {
-	height: 100%;
-	background: radial-gradient(ellipse at 50% 50%, #1a2b52 0%, #101e39 90%);
+html,
+body {
+	height: 100vh;
+	width: 100%;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	user-select: none;
-	font-family: "comic", sans-serif;
-	overflow: hidden;
+	font-family: "fonte", sans-serif;
+	background: radial-gradient(ellipse at 50% 50%, #1a2b52 0%, #101e39 90%);
 }
 
 body {
+	overflow: hidden;
+}
+
+button {
 	width: 100%;
-	height: 100%;
+	height: 5.5vh;
 }
 
 .menu-container {
@@ -40,24 +51,11 @@ body {
 }
 
 .titulo {
-	font-size: 12vh;
-	color: #fff;
-	letter-spacing: 0.5vh;
-	text-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.3);
 	margin-top: -20vh;
-	font-family: "fonte", sans-serif;
-}
-
-.titulo-parte:nth-child(1) {
-	color: #58b058;
-}
-
-.titulo-parte:nth-child(2) {
-	color: #2f4ebc;
-}
-
-.titulo-parte:nth-child(3) {
-	color: #d63535;
+	margin-bottom: -5vh;
+	margin-left: -2vh;
+	width: 70vh;
+	height: auto;
 }
 
 #mensagem {
@@ -74,25 +72,32 @@ body {
 .button-container {
 	display: flex;
 	flex-direction: column;
-	gap: 2vh;
+	gap: 0;
 	width: 100%;
 	max-width: 26.5vh;
 	align-items: center;
 }
 
-#nome-jogador {
+#nome-jogador,
+.game-button {
 	width: 100%;
 	padding: 2vh 0;
-	background-color: #333;
 	color: white;
 	font-family: "comic", sans-serif;
 	border: 0.5vh solid rgba(0, 0, 0, 0.425);
-	border-radius: 2.5vh;
 	font-size: 2.5vh;
 	text-align: center;
 	text-transform: uppercase;
 	outline: none;
+	border-radius: 0;
 	transition: all 0.3s ease;
+}
+
+#nome-jogador {
+	border-top-left-radius: 2.5vh;
+	border-top-right-radius: 2.5vh;
+	background-color: #333;
+	border-bottom-width: 0.5v;
 }
 
 #nome-jogador:focus {
@@ -104,36 +109,28 @@ body {
 	color: #666;
 }
 
-button {
-	width: 100%;
-	padding: 2vh 0;
+.game-button {
+	font-size: 1.8vh;
 	background-color: #58b058;
-	color: white;
-	font-family: "comic", sans-serif;
-	border: 0.5vh solid rgba(0, 0, 0, 0.425);
-	border-radius: 2.5vh;
-	font-size: 2.5vh;
-	cursor: pointer;
-	transition: all 0.2s ease, filter 0.3s ease;
 	text-transform: uppercase;
+	padding: 1.5vh 2vh;
+	border-bottom-left-radius: 2.5vh;
+	border-bottom-right-radius: 2.5vh;
+	border-top-style: none;
+	cursor: pointer;
+	font-weight: 700;
+	transition: all 0.2s ease, filter 0.3s ease;
 	box-shadow: 0 0.4vh 0.8vh rgba(9, 9, 9, 0.85);
 }
 
-button:not(:disabled):hover {
-	transform: translateY(-0.7vh);
+.game-button:hover {
 	background: #3f8a3f;
-	box-shadow: 0 1.1vh 1.3vh rgba(9, 9, 9, 0.735);
 }
 
-button:not(:disabled):active {
-	transform: translateY(0vh);
-	box-shadow: 0 0.4vh 0.8vh rgba(9, 9, 9, 0.85);
-}
-
-button:disabled {
-	filter: saturate(30%);
+.game-button:disabled {
 	cursor: not-allowed;
-	color: #000000;
+	filter: saturate(30%);
+	color: #333;
 }
 
 .imagem-container {
@@ -153,15 +150,16 @@ button:disabled {
 	color: #f1f1f1;
 }
 
-img {
+.imagem-container img {
 	height: 10vh;
 	width: 10vh;
 }
 
-.texto {
+.imagem-container .texto {
 	font-size: 1.9vh;
 	font-weight: bold;
 	margin-top: 0.8vh;
+	margin-bottom: 2vh;
 }
 
 .versao {
@@ -171,6 +169,29 @@ img {
 	color: rgba(233, 228, 228, 0.7);
 	right: 2vh;
 	text-shadow: 0 0.1vh 0.2vh rgba(0, 0, 0, 0.5);
+}
+
+#ranking {
+	top: 2vh;
+	left: 2vw;
+	padding-top: 4vh;
+}
+
+#customiza {
+    position: fixed !important;
+    bottom: 2vh !important;
+    left: 2vw !important;
+    padding-top: 0 !important;
+}
+
+.bola {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: red;
+    box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+	margin-bottom: 1.5vh;
 }
 
 .moedas-container {
@@ -194,17 +215,4 @@ img {
 	color: #ffd700;
 	font-size: 2.5vh;
 	font-weight: bold;
-}
-
-
-#ranking {
-	top: 2vh;
-	left: 2vw;
-	padding-top: 4vh;
-}
-
-#customiza {
-	bottom: 2vh;
-	left: 2vw;
-	padding-bottom: 4vh;
 }

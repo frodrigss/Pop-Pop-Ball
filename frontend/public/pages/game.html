@@ -3,12 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="styles/style.css" />
-		<link rel="icon" href="styles/ico.png" type="image/png" />
-		<meta name="google-adsense-account" content="ca-pub-7695483098950570">
+		<link rel="stylesheet" href="../../public/src/styles/game.css" />
+		<link rel="icon" href="../../public/src/assets/images/ico.png" type="image/png" />
 		<title>Pop Pop Ball</title>
 	</head>
-  
 	<body>
 		<div class="container">
 			<div class="area">
@@ -27,7 +25,14 @@
 				<div class="button-container">
 					<div class="primary-buttons">
 						<button id="play" class="game-button">Play</button>
-						<button id="home" class="game-button" onclick="home()">Home</button>
+						<button id="home" class="game-button">Home</button>
+						<div id="popup-confirmacao" class="popup">
+							<div class="popup-content">
+								<p>Tem certeza que deseja sair?</p>
+								<button id="confirmar-home" class="popup-button">Sim</button>
+								<button id="cancelar-home" class="popup-button">Não</button>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div id="barra-progresso-container">
@@ -41,7 +46,6 @@
 				</div>
 			</div>
 		</div>
+		<script src="../../public/src/scripts/game.js"></script>
 	</body>
-	<script src="scripts/script.js"></script>
-	
 </html>

@@ -1,0 +1,95 @@
+@font-face {
+	font-family: "fonte";
+	src: url(../assets/fonts/ComicNeue-Regular.ttf);
+}
+
+@font-face {
+	font-family: "comic";
+	src: url(../assets/fonts/ComicNeue-Regular.ttf);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	font-family: "fonte", sans-serif;
+	background: radial-gradient(ellipse at 50% 50%, #1a2b52 0%, #101e39 90%);
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #232222;
+	border-radius: 2.5vh;
+	box-shadow: 0 0.8vh 2.5vh rgba(0, 0, 0, 0.5);
+	padding: 4vh;
+}
+
+.area {
+	width: 100%;
+	background-color: rgb(40, 40, 40);
+	border-radius: 1.8vh;
+	box-shadow: 0 0.6vh 1.3vh rgba(0, 0, 0, 0.4);
+	color: #ecf0f1;
+	overflow: hidden;
+}
+
+.game-button {
+	background-color: #58b058;
+	color: white;
+	font-family: "comic", sans-serif;
+	font-size: 1.8vh;
+	text-transform: uppercase;
+	padding: 1vh 3.4vh;
+	border: 0.5vh solid rgba(0, 0, 0, 0.425);
+	border-radius: 2.2vh;
+	box-shadow: 0 0.4vh 0.8vh rgba(9, 9, 9, 0.85);
+	cursor: pointer;
+	transition: all 0.2s ease, filter 0.3s ease;
+	font-weight: 600;
+}
+
+.game-button:hover {
+	background: #3f8a3f;
+	box-shadow: 0 1.1vh 1.3vh rgba(9, 9, 9, 0.735);
+	transform: translateY(-0.7vh);
+}
+
+.game-button:active {
+	box-shadow: 0 0.4vh 0.8vh rgba(9, 9, 9, 0.85);
+	transform: translateY(0vh);
+}
+
+.moedas-container {
+	position: fixed;
+	top: 2vh;
+	right: 2vw;
+	display: flex;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 0.5vh 1vw;
+	border-radius: 2vh;
+}
+
+.moeda-icone {
+	width: 3vh;
+	height: 3vh;
+	margin-right: 1vw;
+}
+
+#total-moedas {
+	color: #ffd700;
+	font-size: 2.5vh;
+	font-weight: bold;
+}

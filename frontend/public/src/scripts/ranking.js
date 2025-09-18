@@ -3,7 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		rankingList = document.getElementById("ranking-list");
 
 	if (rankings.length === 0) {
-		rankingList.innerHTML = "Nenhum jogador no ranking.";
+		const li = document.createElement("li");
+		li.id = "none";
+		li.textContent = `Nenhum jogador no ranking.`;
+		rankingList.appendChild(li);
 	} else {
 		rankings.forEach((jogador, index) => {
 			const li = document.createElement("li");
